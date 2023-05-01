@@ -1,5 +1,13 @@
 import React from "react";
-import { AspectRatio, Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Card,
+  CardBody,
+  Heading,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 const ProductCard = () => {
   return (
@@ -12,9 +20,7 @@ const ProductCard = () => {
           />
         </AspectRatio>
         <Stack mt={5}>
-          <Heading size="md">
-            iPhone 9
-          </Heading>
+          <Heading size="md">iPhone 9</Heading>
           <Text>$549</Text>
         </Stack>
       </CardBody>
