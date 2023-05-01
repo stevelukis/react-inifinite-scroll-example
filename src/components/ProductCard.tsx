@@ -1,15 +1,16 @@
 import React from "react";
-import { Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { AspectRatio, Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
 
 const ProductCard = () => {
   return (
-    <Card maxW={250}>
+    <Card>
       <CardBody>
-        <Image
-          src="https://i.dummyjson.com/data/products/1/1.jpg"
-          rounded="lg"
-          boxSize={225}
-        />
+        <AspectRatio ratio={1}>
+          <Image
+            src="https://i.dummyjson.com/data/products/1/2.jpg"
+            rounded="lg"
+          />
+        </AspectRatio>
         <Stack mt={5}>
           <Heading size="md">
             iPhone 9
