@@ -1,17 +1,30 @@
 import React from "react";
-import { Container, SimpleGrid } from "@chakra-ui/react";
+import { Container, SimpleGrid, Text } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
+import useProducts from "../hooks";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const HomePage = () => {
-  const items = [...Array(20)];
+  const { data, fetchNextPage, hasNextPage } = useProducts();
 
   return (
     <Container maxW="6xl" padding={5}>
-      <SimpleGrid columns={{ sm: 2, md: 5 }} gap={2}>
-        {items.map((_, i) => (
-          <ProductCard key={i} />
-        ))}
-      </SimpleGrid>
+      <InfiniteScroll
+        next={fetchNextPage}
+        hasMore={hasNextPage || false}
+        loader={<Text>Loading...</Text>}
+        dataLength={
+          data?.pages.reduce((total, page) => total + page.length, 0) || 0
+        }
+      >
+        <SimpleGrid columns={{ sm: 2, md: 5 }} gap={2}>
+          {data?.pages.map((page) =>
+            page.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          )}
+        </SimpleGrid>
+      </InfiniteScroll>
     </Container>
   );
 };

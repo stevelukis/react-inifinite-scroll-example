@@ -8,20 +8,25 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { Product } from "../hooks";
 
-const ProductCard = () => {
+interface Props {
+  product: Product;
+}
+
+const ProductCard = ({ product }: Props) => {
   return (
     <Card>
       <CardBody>
         <AspectRatio ratio={1}>
           <Image
-            src="https://i.dummyjson.com/data/products/1/2.jpg"
+            src={product.images[0]}
             rounded="lg"
           />
         </AspectRatio>
         <Stack mt={5}>
-          <Heading size="md">iPhone 9</Heading>
-          <Text>$549</Text>
+          <Heading size="md">{product.title}</Heading>
+          <Text>${product.price}</Text>
         </Stack>
       </CardBody>
     </Card>
